@@ -17,7 +17,7 @@ public static class ApplicationDependencyInjection
 
         services.AddTransient<ILogradouroService, LogradouroService>();
 
-        //services.AddTransient<IColaboradorService, ColaboradorService>();
+        services.AddTransient<IColaboradorService, ColaboradorService>();
 
         services.AddTransient<IAlunoService, AlunoService>();
 
