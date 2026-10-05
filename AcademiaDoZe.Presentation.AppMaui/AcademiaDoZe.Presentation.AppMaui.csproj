@@ -28,7 +28,7 @@
 		<MauiXamlInflator>SourceGen</MauiXamlInflator>
 
 		<!-- Display name -->
-		<ApplicationTitle>AcademiaDoZe.Presentation.AppMaui</ApplicationTitle>
+		<ApplicationTitle>Academia do Zé</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.academiadoze.presentation.appmaui</ApplicationId>
@@ -37,7 +37,7 @@
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
+		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/maui-template-unpackaged -->
 		<WindowsPackageType>None</WindowsPackageType>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
@@ -49,7 +49,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#39FF14" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -57,7 +57,7 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-		
+
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
@@ -73,23 +73,26 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\AcademiaDoZe.Application\AcademiaDoZe.Application.csproj" />
+		<ProjectReference Include="..\AcademiaDoZe.Application\AcademiaDoZe.Application.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\DashboardListPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\LogradouroListPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\LogradouroPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="Views\ConfigPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\DashboardListPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\LogradouroListPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\LogradouroPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
+		<Folder Include="Models\" />
 	</ItemGroup>
 
 </Project>

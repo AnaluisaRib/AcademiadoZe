@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Ana Luisa Ribeiro de Araujo -->
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ConfigPage"
+    Title="Configurações">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- CONFIGURAÇÃO DE TEMA -->
+            <Border Style="{StaticResource Card}">
+                <VerticalStackLayout Spacing="15">
+
+                    <Label
+                        Text="🎨  Tema"
+                        Style="{StaticResource SectionTitle}" />
+
+                    <Label
+                        Text="Escolha como deseja visualizar o aplicativo."
+                        Style="{StaticResource SubtitleLabel}" />
+
+                    <Picker
+                        x:Name="TemaPicker"
+                        Title="Selecione o tema">
+
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>light</x:String>
+                                <x:String>dark</x:String>
+                                <x:String>system</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+
+                    </Picker>
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <Button
+                            Grid.Column="0"
+                            Text="✕  Cancelar"
+                            Clicked="OnCancelarClicked"
+                            Style="{StaticResource ButtonSecondary}" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="✓  Salvar Tema"
+                            Clicked="OnSalvarTemaClicked"
+                            Style="{StaticResource ButtonPrimary}" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+
+
+            <!-- CONFIGURAÇÃO DO BANCO -->
+            <Border Style="{StaticResource Card}">
+                <VerticalStackLayout Spacing="15">
+
+                    <Label
+                        Text="🗄️  Banco de Dados"
+                        Style="{StaticResource SectionTitle}" />
+
+                    <Label
+                        Text="Configuração da conexão utilizada pelo sistema."
+                        Style="{StaticResource SubtitleLabel}" />
+
+
+                    <!-- TIPO DO BANCO -->
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label Text="Tipo de banco" />
+
+                        <Picker
+                            x:Name="DatabaseTypePicker"
+                            Title="Selecione o banco"
+                            SelectedIndexChanged="OnDatabaseTypeChanged" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- INFORMAÇÃO SQLITE -->
+                    <Border
+                        x:Name="SqliteInfoCard"
+                        IsVisible="False"
+                        BackgroundColor="{StaticResource SurfaceLight}"
+                        Stroke="{StaticResource Border}"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="12">
+
+                        <Label
+                            Text="SQLite é um banco de dados local armazenado em arquivo. Não necessita de servidor, usuário ou senha."
+                            TextColor="{StaticResource TextSecondary}"
+                            FontSize="13" />
+
+                    </Border>
+
+
+                    <!-- CAMINHO SQLITE -->
+                    <VerticalStackLayout
+                        x:Name="SqliteContainer"
+                        IsVisible="False"
+                        Spacing="6">
+
+                        <Label Text="Caminho do banco (.db)" />
+
+                        <Entry
+                            x:Name="SqliteCaminhoEntry"
+                            Placeholder="Caminho do arquivo .db" />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- SERVIDOR E BANCO -->
+                    <Grid
+                        x:Name="ServidorBancoGrid"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <VerticalStackLayout
+                            Grid.Column="0"
+                            Spacing="6">
+
+                            <Label Text="Servidor" />
+
+                            <Entry
+                                x:Name="ServidorEntry"
+                                Placeholder="Digite o servidor..." />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="6">
+
+                            <Label Text="Banco" />
+
+                            <Entry
+                                x:Name="BancoEntry"
+                                Placeholder="Nome do banco..." />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+
+                    <!-- USUÁRIO E SENHA -->
+                    <Grid
+                        x:Name="CredenciaisGrid"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <VerticalStackLayout
+                            Grid.Column="0"
+                            Spacing="6">
+
+                            <Label Text="Usuário" />
+
+                            <Entry
+                                x:Name="UsuarioEntry"
+                                Placeholder="Digite o usuário..." />
+
+                        </VerticalStackLayout>
+
+
+                        <VerticalStackLayout
+                            Grid.Column="1"
+                            Spacing="6">
+
+                            <Label Text="Senha" />
+
+                            <Entry
+                                x:Name="SenhaEntry"
+                                Placeholder="Digite a senha..."
+                                IsPassword="True" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+
+                    <!-- COMPLEMENTO -->
+                    <VerticalStackLayout Spacing="6">
+
+                        <Label
+                            x:Name="ComplementoLabel"
+                            Text="Complemento" />
+
+                        <Entry
+                            x:Name="ComplementoEntry"
+                            Placeholder="Digite o complemento..." />
+
+                    </VerticalStackLayout>
+
+
+                    <!-- BOTÕES DO BANCO -->
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <Button
+                            Grid.Column="0"
+                            Text="✕  Cancelar"
+                            Clicked="OnCancelarClicked"
+                            Style="{StaticResource ButtonSecondary}" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="✓  Salvar Banco"
+                            Clicked="OnSalvarBdClicked"
+                            Style="{StaticResource ButtonPrimary}" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

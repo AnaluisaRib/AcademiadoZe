@@ -7,68 +7,70 @@
     x:Class="AcademiaDoZe.Presentation.AppMaui.Views.DashboardListPage"
     xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
     x:DataType="vm:DashboardListViewModel"
-    Title="Academia do Zé"
-    BackgroundColor="#0B0B0B">
+    Title="Academia do Zé">
 
     <ScrollView>
 
         <VerticalStackLayout
             Spacing="0"
-            Padding="20,25,20,30">
+            Padding="20,25,20,35">
 
-            <!-- LOGO -->
-            <Border
-                BackgroundColor="#111111"
-                Stroke="#39FF14"
-                StrokeThickness="1"
-                StrokeShape="RoundRectangle 20"
-                Padding="15"
-                Margin="0,0,0,20">
+            <!-- CABEÇALHO -->
+            <Grid
+                ColumnDefinitions="Auto,*"
+                ColumnSpacing="15"
+                Margin="0,0,0,30">
 
-                <VerticalStackLayout
-                    Spacing="8"
-                    HorizontalOptions="Center">
+                <Border
+                    Grid.Column="0"
+                    WidthRequest="62"
+                    HeightRequest="62"
+                    BackgroundColor="{StaticResource Surface}"
+                    Stroke="{StaticResource Border}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="10"
+                    VerticalOptions="Center">
 
                     <Image
                         Source="academiadoze.png"
-                        HeightRequest="190"
-                        WidthRequest="190"
-                        Aspect="AspectFit"
-                        HorizontalOptions="Center"/>
+                        Aspect="AspectFit" />
+
+                </Border>
+
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    Spacing="3">
 
                     <Label
-                        Text="Sistema de Gerenciamento"
-                        TextColor="#BDBDBD"
-                        FontSize="14"
-                        HorizontalTextAlignment="Center"/>
+                        Text="Academia do Zé"
+                        Style="{StaticResource TitleLabel}"
+                        FontSize="24" />
 
                     <Label
-                        Text="Ana Luisa Ribeiro de Araujo"
-                        TextColor="#39FF14"
-                        FontSize="13"
-                        FontAttributes="Bold"
-                        HorizontalTextAlignment="Center"/>
+                        Text="Sistema de gerenciamento"
+                        Style="{StaticResource SubtitleLabel}" />
 
                 </VerticalStackLayout>
 
-            </Border>
+            </Grid>
 
 
-            <!-- TÍTULO -->
+            <!-- SAUDAÇÃO -->
             <VerticalStackLayout
-                Spacing="4"
-                Margin="0,0,0,20">
+                Spacing="5"
+                Margin="0,0,0,22">
 
                 <Label
-                    Text="Dashboard"
-                    TextColor="White"
-                    FontSize="28"
-                    FontAttributes="Bold"/>
+                    Text="Olá, Ana Luisa! 👋"
+                    TextColor="{StaticResource TextPrimary}"
+                    FontSize="26"
+                    FontAttributes="Bold" />
 
                 <Label
-                    Text="Visão geral da Academia do Zé"
-                    TextColor="#999999"
-                    FontSize="14"/>
+                    Text="Aqui está um resumo da sua academia."
+                    Style="{StaticResource SubtitleLabel}" />
 
             </VerticalStackLayout>
 
@@ -81,76 +83,70 @@
                 RowSpacing="12">
 
 
-                <!-- LOGRADOUROS -->
+                <!-- ALUNOS -->
                 <Border
                     Grid.Row="0"
                     Grid.Column="0"
-                    BackgroundColor="#151515"
-                    Stroke="#39FF14"
-                    StrokeThickness="1"
-                    StrokeShape="RoundRectangle 16"
-                    Padding="15">
-
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Command="{Binding NavigateToLogradourosCommand}"/>
-                    </Border.GestureRecognizers>
+                    Style="{StaticResource HighlightCard}">
 
                     <VerticalStackLayout
-                        Spacing="8">
+                        Spacing="7">
 
                         <Label
-                            Text="📍"
-                            FontSize="25"/>
+                            Text="👥"
+                            FontSize="22" />
 
                         <Label
-                            Text="{Binding TotalLogradouros}"
-                            TextColor="#39FF14"
-                            FontSize="30"
-                            FontAttributes="Bold"/>
+                            Text="{Binding TotalAlunos}"
+                            Style="{StaticResource CardNumberLabel}" />
 
                         <Label
-                            Text="Logradouros"
-                            TextColor="White"
-                            FontSize="14"/>
+                            Text="Alunos"
+                            Style="{StaticResource CardTitleLabel}" />
+
+                        <Label
+                            Text="Cadastro de alunos"
+                            Style="{StaticResource CardDescriptionLabel}" />
+
+                        <Label
+                            Text="Em desenvolvimento"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontSize="11" />
 
                     </VerticalStackLayout>
 
                 </Border>
 
 
-                <!-- ALUNOS -->
+                <!-- MATRÍCULAS -->
                 <Border
                     Grid.Row="0"
                     Grid.Column="1"
-                    BackgroundColor="#151515"
-                    Stroke="#2C2C2C"
-                    StrokeThickness="1"
-                    StrokeShape="RoundRectangle 16"
-                    Padding="15">
-
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Command="{Binding NavigateToAlunosCommand}"/>
-                    </Border.GestureRecognizers>
+                    Style="{StaticResource Card}">
 
                     <VerticalStackLayout
-                        Spacing="8">
+                        Spacing="7">
 
                         <Label
-                            Text="👤"
-                            FontSize="25"/>
+                            Text="📋"
+                            FontSize="22" />
 
                         <Label
-                            Text="{Binding TotalAlunos}"
-                            TextColor="#39FF14"
-                            FontSize="30"
-                            FontAttributes="Bold"/>
+                            Text="{Binding TotalMatriculas}"
+                            Style="{StaticResource CardNumberLabel}" />
 
                         <Label
-                            Text="Alunos"
-                            TextColor="White"
-                            FontSize="14"/>
+                            Text="Matrículas"
+                            Style="{StaticResource CardTitleLabel}" />
+
+                        <Label
+                            Text="Registros de matrícula"
+                            Style="{StaticResource CardDescriptionLabel}" />
+
+                        <Label
+                            Text="Em desenvolvimento"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontSize="11" />
 
                     </VerticalStackLayout>
 
@@ -161,72 +157,74 @@
                 <Border
                     Grid.Row="1"
                     Grid.Column="0"
-                    BackgroundColor="#151515"
-                    Stroke="#2C2C2C"
-                    StrokeThickness="1"
-                    StrokeShape="RoundRectangle 16"
-                    Padding="15">
-
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Command="{Binding NavigateToColaboradoresCommand}"/>
-                    </Border.GestureRecognizers>
+                    Style="{StaticResource Card}">
 
                     <VerticalStackLayout
-                        Spacing="8">
+                        Spacing="7">
 
                         <Label
                             Text="💼"
-                            FontSize="25"/>
+                            FontSize="22" />
 
                         <Label
                             Text="{Binding TotalColaboradores}"
-                            TextColor="#39FF14"
-                            FontSize="30"
-                            FontAttributes="Bold"/>
+                            Style="{StaticResource CardNumberLabel}" />
 
                         <Label
                             Text="Colaboradores"
-                            TextColor="White"
-                            FontSize="14"/>
+                            Style="{StaticResource CardTitleLabel}" />
+
+                        <Label
+                            Text="Equipe cadastrada"
+                            Style="{StaticResource CardDescriptionLabel}" />
+
+                        <Label
+                            Text="Em desenvolvimento"
+                            TextColor="{StaticResource TextSecondary}"
+                            FontSize="11" />
 
                     </VerticalStackLayout>
 
                 </Border>
 
 
-                <!-- MATRÍCULAS -->
+                <!-- LOGRADOUROS -->
                 <Border
                     Grid.Row="1"
                     Grid.Column="1"
-                    BackgroundColor="#151515"
-                    Stroke="#2C2C2C"
-                    StrokeThickness="1"
-                    StrokeShape="RoundRectangle 16"
-                    Padding="15">
+                    Style="{StaticResource HighlightCard}">
 
                     <Border.GestureRecognizers>
+
                         <TapGestureRecognizer
-                            Command="{Binding NavigateToMatriculasCommand}"/>
+                            Command="{Binding NavigateToLogradourosCommand}" />
+
                     </Border.GestureRecognizers>
 
                     <VerticalStackLayout
-                        Spacing="8">
+                        Spacing="7">
 
                         <Label
-                            Text="📋"
-                            FontSize="25"/>
+                            Text="📍"
+                            FontSize="22" />
 
                         <Label
-                            Text="{Binding TotalMatriculas}"
-                            TextColor="#39FF14"
-                            FontSize="30"
-                            FontAttributes="Bold"/>
+                            Text="{Binding TotalLogradouros}"
+                            Style="{StaticResource CardNumberLabel}" />
 
                         <Label
-                            Text="Matrículas"
-                            TextColor="White"
-                            FontSize="14"/>
+                            Text="Logradouros"
+                            Style="{StaticResource CardTitleLabel}" />
+
+                        <Label
+                            Text="Endereços cadastrados"
+                            Style="{StaticResource CardDescriptionLabel}" />
+
+                        <Label
+                            Text="Clique para gerenciar"
+                            TextColor="{StaticResource Primary}"
+                            FontSize="11"
+                            FontAttributes="Bold" />
 
                     </VerticalStackLayout>
 
@@ -235,41 +233,59 @@
             </Grid>
 
 
-            <!-- ACESSO A LOGRADOUROS -->
+            <!-- ACESSO RÁPIDO -->
+            <Label
+                Text="Acesso rápido"
+                Style="{StaticResource SectionTitle}"
+                Margin="0,30,0,12" />
+
+
             <Border
-                BackgroundColor="#39FF14"
-                StrokeThickness="0"
-                StrokeShape="RoundRectangle 16"
-                Padding="18"
-                Margin="0,25,0,0">
+                Style="{StaticResource HighlightCard}"
+                Padding="16">
 
                 <Border.GestureRecognizers>
+
                     <TapGestureRecognizer
-                        Command="{Binding NavigateToLogradourosCommand}"/>
+                        Command="{Binding NavigateToLogradourosCommand}" />
+
                 </Border.GestureRecognizers>
 
-                <Grid ColumnDefinitions="Auto,*"
-                      ColumnSpacing="12">
+                <Grid
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="15">
 
-                    <Label
-                        Text="📍"
-                        FontSize="24"
-                        VerticalOptions="Center"/>
+                    <Border
+                        WidthRequest="48"
+                        HeightRequest="48"
+                        BackgroundColor="{StaticResource Primary}"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 14"
+                        Padding="10"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="📍"
+                            FontSize="21"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+
+                    </Border>
 
                     <VerticalStackLayout
                         Grid.Column="1"
-                        Spacing="2">
+                        VerticalOptions="Center"
+                        Spacing="3">
 
                         <Label
                             Text="Gerenciar Logradouros"
-                            TextColor="#000000"
+                            TextColor="{StaticResource TextPrimary}"
                             FontSize="16"
-                            FontAttributes="Bold"/>
+                            FontAttributes="Bold" />
 
                         <Label
-                            Text="Cadastrar, editar e excluir"
-                            TextColor="#1A1A1A"
-                            FontSize="12"/>
+                            Text="Cadastrar, editar e excluir endereços"
+                            Style="{StaticResource CardDescriptionLabel}" />
 
                     </VerticalStackLayout>
 
@@ -278,13 +294,13 @@
             </Border>
 
 
-            <!-- CARREGANDO -->
+            <!-- CARREGAMENTO -->
             <ActivityIndicator
                 IsVisible="{Binding IsBusy}"
                 IsRunning="{Binding IsBusy}"
-                Color="#39FF14"
+                Color="{StaticResource Primary}"
                 HorizontalOptions="Center"
-                Margin="0,20,0,0"/>
+                Margin="0,25,0,0" />
 
         </VerticalStackLayout>
 
