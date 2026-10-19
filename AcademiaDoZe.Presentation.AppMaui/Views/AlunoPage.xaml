@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Ana Luisa Ribeiro de Araujo -->
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+    x:Class="AcademiaDoZe.Presentation.AppMaui.Views.AlunoPage"
+    x:DataType="vm:AlunoViewModel"
+    Title="Cadastro de aluno"
+    BackgroundColor="#F5F5F5">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label
+                Text="{Binding IsEditMode, Converter={x:Null}}"
+                IsVisible="False" />
+
+            <Label
+                Text="Cadastro de aluno"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="#171717" />
+
+            <Border
+                Padding="16"
+                BackgroundColor="#FFFFFF"
+                Stroke="#E0E0E0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Foto do aluno"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#171717" />
+
+                    <Image
+                        Source="{Binding FotoSelecionada}"
+                        HeightRequest="160"
+                        WidthRequest="160"
+                        Aspect="AspectFill"
+                        HorizontalOptions="Center" />
+
+                    <Button
+                        Text="Selecionar foto"
+                        Command="{Binding SelecionarFotoCommand}"
+                        BackgroundColor="#FF7A00"
+                        TextColor="#171717"
+                        CornerRadius="10" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                Text="Dados pessoais"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="#171717" />
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Nome completo" TextColor="#171717" />
+                <Entry
+                    Placeholder="Digite o nome completo"
+                    Text="{Binding Aluno.Nome}"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="CPF" TextColor="#171717" />
+                <Entry
+                    Placeholder="Digite o CPF"
+                    Text="{Binding Aluno.Cpf}"
+                    Keyboard="Numeric"
+                    MaxLength="14"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Data de nascimento" TextColor="#171717" />
+                <DatePicker
+                    Date="{Binding DataNascimentoSelecionada}"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Telefone" TextColor="#171717" />
+                <Entry
+                    Placeholder="Digite o telefone"
+                    Text="{Binding Aluno.Telefone}"
+                    Keyboard="Telephone"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="E-mail" TextColor="#171717" />
+                <Entry
+                    Placeholder="Digite o e-mail"
+                    Text="{Binding Aluno.Email}"
+                    Keyboard="Email"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+            <Label
+                Text="Endereço"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="#171717" />
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="CEP" TextColor="#171717" />
+                <Entry
+                    Placeholder="Digite o CEP"
+                    Text="{Binding Cep}"
+                    Keyboard="Numeric"
+                    MaxLength="9"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+            <Button
+                Text="Buscar endereço"
+                Command="{Binding PesquisarEnderecoPorCepCommand}"
+                BackgroundColor="#E5E5E5"
+                TextColor="#171717"
+                CornerRadius="10" />
+
+            <Border
+                Padding="12"
+                BackgroundColor="#FFFFFF"
+                Stroke="#E0E0E0">
+
+                <VerticalStackLayout Spacing="5">
+                    <Label
+                        Text="{Binding Aluno.Endereco.Nome, StringFormat='Logradouro: {0}'}"
+                        TextColor="#333333" />
+
+                    <Label
+                        Text="{Binding Aluno.Endereco.Bairro, StringFormat='Bairro: {0}'}"
+                        TextColor="#333333" />
+
+                    <Label
+                        Text="{Binding Aluno.Endereco.Cidade, StringFormat='Cidade: {0}'}"
+                        TextColor="#333333" />
+
+                    <Label
+                        Text="{Binding Aluno.Endereco.Estado, StringFormat='Estado: {0}'}"
+                        TextColor="#333333" />
+                </VerticalStackLayout>
+            </Border>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Número" TextColor="#171717" />
+                <Entry
+                    Placeholder="Número da residência"
+                    Text="{Binding Aluno.Numero}"
+                    Keyboard="Numeric"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Complemento" TextColor="#171717" />
+                <Entry
+                    Placeholder="Apartamento, bloco etc."
+                    Text="{Binding Aluno.Complemento}"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Senha" TextColor="#171717" />
+                <Entry
+                    Placeholder="Crie uma senha"
+                    Text="{Binding Aluno.Senha}"
+                    IsPassword="True"
+                    BackgroundColor="#FFFFFF"
+                    TextColor="#171717"
+                    PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout Spacing="5">
+                <Label
+                Text="Confirmar senha"
+                TextColor="#171717" />
+
+                        <Entry
+                Placeholder="Repita a senha"
+                Text="{Binding ConfirmarSenha}"
+                IsPassword="True"
+                BackgroundColor="#FFFFFF"
+                TextColor="#171717"
+                PlaceholderColor="#777777" />
+            </VerticalStackLayout>
+
+
+            <Button
+                Text="Salvar aluno"
+                Command="{Binding SalvarCommand}"
+                BackgroundColor="#FF7A00"
+                TextColor="#171717"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                HeightRequest="50" />
+
+            <Button
+                Text="Excluir aluno"
+                Command="{Binding ExcluirCommand}"
+                IsVisible="{Binding IsEditMode}"
+                BackgroundColor="#C62828"
+                TextColor="#FFFFFF"
+                CornerRadius="10" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

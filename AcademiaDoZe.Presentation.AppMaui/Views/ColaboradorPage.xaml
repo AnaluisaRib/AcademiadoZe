@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Ana Luisa Ribeiro de Araujo -->
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+    x:Class="AcademiaDoZe.Presentation.AppMaui.Views.ColaboradorPage"
+    x:DataType="vm:ColaboradorViewModel"
+    Title="{Binding Title}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+
+            <Label
+                Text="Cadastro de Colaborador"
+                FontSize="26"
+                FontAttributes="Bold"
+                TextColor="#39FF14" />
+
+            <Label
+                Text="Foto do colaborador"
+                FontSize="18"
+                FontAttributes="Bold" />
+
+            <Image
+                Source="{Binding FotoSelecionada}"
+                HeightRequest="160"
+                WidthRequest="160"
+                Aspect="AspectFill"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Selecionar foto"
+                Command="{Binding SelecionarFotoCommand}"
+                BackgroundColor="#39FF14"
+                TextColor="Black" />
+
+            <Label Text="Dados pessoais"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <Entry Placeholder="Nome completo"
+                   Text="{Binding Colaborador.Nome}" />
+
+            <Entry Placeholder="CPF"
+                   Keyboard="Numeric"
+                   MaxLength="14"
+                   Text="{Binding Colaborador.Cpf}" />
+
+            <Label Text="Data de nascimento" />
+
+            <DatePicker Date="{Binding DataNascimentoSelecionada, Mode=TwoWay}" />
+
+            <Entry Placeholder="Telefone"
+                   Keyboard="Telephone"
+                   Text="{Binding Colaborador.Telefone}" />
+
+            <Entry Placeholder="E-mail"
+                   Keyboard="Email"
+                   Text="{Binding Colaborador.Email}" />
+
+            <Label Text="Dados profissionais"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <Picker Title="Tipo de colaborador"
+                    ItemsSource="{Binding ColaboradorTipos}"
+                    SelectedItem="{Binding Colaborador.Tipo}" />
+
+            <Picker Title="Vínculo"
+                    ItemsSource="{Binding ColaboradorVinculos}"
+                    SelectedItem="{Binding Colaborador.Vinculo}" />
+
+            <Label Text="Data de admissão" />
+
+            <DatePicker Date="{Binding DataAdmissaoSelecionada, Mode=TwoWay}" />
+
+            <Label Text="Endereço"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <Entry Grid.Column="0"
+                       Placeholder="CEP"
+                       Keyboard="Numeric"
+                       MaxLength="9"
+                       Text="{Binding Cep}" />
+
+                <Button Grid.Column="1"
+                        Text="Buscar"
+                        BackgroundColor="#39FF14"
+                        TextColor="Black"
+                        Command="{Binding PesquisarEnderecoPorCepCommand}" />
+            </Grid>
+
+            <Label Text="{Binding Colaborador.Endereco.Nome, StringFormat='Logradouro: {0}'}" />
+            <Label Text="{Binding Colaborador.Endereco.Bairro, StringFormat='Bairro: {0}'}" />
+            <Label Text="{Binding Colaborador.Endereco.Cidade, StringFormat='Cidade: {0}'}" />
+
+            <Entry Placeholder="Número"
+                   Keyboard="Numeric"
+                   Text="{Binding Colaborador.Numero}" />
+
+            <Entry Placeholder="Complemento"
+                   Text="{Binding Colaborador.Complemento}" />
+
+            <Label Text="Acesso ao sistema"
+                   FontSize="18"
+                   FontAttributes="Bold" />
+
+            <Entry Placeholder="Senha"
+                   IsPassword="True"
+                   Text="{Binding Colaborador.Senha}" />
+
+            <Entry Placeholder="Confirmar senha"
+                   IsPassword="True"
+                   Text="{Binding ConfirmarSenha}" />
+
+            <Button Text="Salvar colaborador"
+                    BackgroundColor="#39FF14"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    Command="{Binding SalvarCommand}" />
+
+            <Button Text="Excluir colaborador"
+                    BackgroundColor="#B00020"
+                    TextColor="White"
+                    Command="{Binding ExcluirCommand}"
+                    IsVisible="{Binding IsEditMode}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

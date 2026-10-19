@@ -1,4 +1,5 @@
-﻿// Ana Luisa Ribeiro de Araujo
+﻿
+// Ana Luisa Ribeiro de Araujo
 
 using AcademiaDoZe.Presentation.AppMaui.Views;
 
@@ -15,8 +16,8 @@ public partial class AppShell : Shell
 
     private static void RegisterRoutes()
     {
-        Routing.RegisterRoute(
-            "logradouro",
-            typeof(LogradouroPage));
+        Routing.RegisterRoute("logradouro", typeof(LogradouroPage));
+        Routing.RegisterRoute("colaborador", typeof(ColaboradorPage));
+        Routing.RegisterRoute("aluno", typeof(AlunoPage));
     }
 }
