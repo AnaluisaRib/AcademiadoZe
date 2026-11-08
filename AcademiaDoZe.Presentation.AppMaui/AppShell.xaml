@@ -32,6 +32,12 @@
             Route="alunos" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Matrículas" Icon="academiadoze.png">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:MatriculaListPage}"
+            Route="matriculas" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Configurações" Icon="academiadoze.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:ConfigPage}"
@@ -39,3 +45,4 @@
     </FlyoutItem>
 
 </Shell>
+ 

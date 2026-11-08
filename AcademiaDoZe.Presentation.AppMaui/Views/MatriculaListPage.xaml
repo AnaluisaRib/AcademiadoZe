@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+    xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
+    x:Class="AcademiaDoZe.Presentation.AppMaui.Views.MatriculaListPage"
+    x:DataType="vm:MatriculaListViewModel"
+    Title="{Binding Title}"
+    BackgroundColor="#F5F5F5">
+
+    <Grid Padding="20" RowDefinitions="Auto,Auto,*">
+
+        <!-- Cabeçalho -->
+        <VerticalStackLayout Grid.Row="0" Spacing="5">
+
+            <Label
+                Text="Matrículas"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="#171717" />
+
+            <Label
+                Text="Consulte e gerencie as matrículas dos alunos."
+                FontSize="14"
+                TextColor="#666666" />
+
+            <Button
+                Text="+ Nova matrícula"
+                Command="{Binding NovaMatriculaCommand}"
+                BackgroundColor="#39FF14"
+                TextColor="#171717"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                HeightRequest="48"
+                Margin="0,12,0,5" />
+
+        </VerticalStackLayout>
+
+        <!-- Pesquisa -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="10"
+            Margin="0,15,0,15">
+
+            <Picker
+                Title="Pesquisar por"
+                ItemsSource="{Binding FilterTypes}"
+                SelectedItem="{Binding SelectedFilterType}"
+                BackgroundColor="White"
+                TextColor="#171717" />
+
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+
+                <Entry
+                    Grid.Column="0"
+                    Placeholder="Digite sua pesquisa..."
+                    Text="{Binding SearchText}"
+                    BackgroundColor="White"
+                    TextColor="#171717"
+                    PlaceholderColor="#888888"
+                    ClearButtonVisibility="WhileEditing" />
+
+                <Button
+                    Grid.Column="1"
+                    Text="Buscar"
+                    Command="{Binding PesquisarCommand}"
+                    BackgroundColor="#39FF14"
+                    TextColor="#171717"
+                    FontAttributes="Bold"
+                    CornerRadius="10" />
+
+            </Grid>
+
+        </VerticalStackLayout>
+
+        <!-- Lista de matrículas -->
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding Matriculas}"
+            SelectedItem="{Binding SelectedMatricula, Mode=TwoWay}"
+            SelectionMode="Single">
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout
+                    Padding="20"
+                    Spacing="10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Label
+                        Text="Nenhuma matrícula encontrada."
+                        FontSize="16"
+                        TextColor="#777777"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="dto:MatriculaDto">
+                    <Border
+                        Padding="15"
+                        Margin="0,5"
+                        BackgroundColor="White"
+                        Stroke="#E0E0E0">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="8">
+
+                            <Label
+                                Text="{Binding AlunoMatricula.Nome}"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#171717" />
+
+                            <Label
+                                Text="{Binding AlunoMatricula.Cpf, StringFormat='CPF: {0}'}"
+                                FontSize="13"
+                                TextColor="#666666" />
+
+                            <Grid ColumnDefinitions="*,*">
+
+                                <VerticalStackLayout Grid.Column="0">
+                                    <Label
+                                        Text="Plano"
+                                        FontSize="12"
+                                        TextColor="#888888" />
+
+                                    <Label
+                                        Text="{Binding Plano}"
+                                        FontAttributes="Bold"
+                                        TextColor="#171717" />
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label
+                                        Text="Código"
+                                        FontSize="12"
+                                        TextColor="#888888" />
+
+                                    <Label
+                                        Text="{Binding Id}"
+                                        FontAttributes="Bold"
+                                        TextColor="#171717" />
+                                </VerticalStackLayout>
+
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*">
+
+                                <VerticalStackLayout Grid.Column="0">
+                                    <Label
+                                        Text="Início"
+                                        FontSize="12"
+                                        TextColor="#888888" />
+
+                                    <Label
+                                        Text="{Binding DataInicio}"
+                                        TextColor="#171717" />
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label
+                                        Text="Término"
+                                        FontSize="12"
+                                        TextColor="#888888" />
+
+                                    <Label
+                                        Text="{Binding DataFim}"
+                                        TextColor="#171717" />
+                                </VerticalStackLayout>
+
+                            </Grid>
+
+                            <Label
+                                Text="Toque para editar esta matrícula"
+                                FontSize="12"
+                                TextColor="#228B22"
+                                HorizontalTextAlignment="End" />
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

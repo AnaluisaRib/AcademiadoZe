@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+    x:Class="AcademiaDoZe.Presentation.AppMaui.Views.MatriculaPage"
+    x:DataType="vm:MatriculaViewModel"
+    Title="{Binding Title}"
+    BackgroundColor="#F5F5F5">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <Label
+                Text="Matrícula"
+                FontSize="28"
+                FontAttributes="Bold"
+                TextColor="#171717" />
+
+            <Label
+                Text="Preencha os dados para registrar a matrícula do aluno."
+                FontSize="14"
+                TextColor="#666666" />
+
+            <!-- Dados do aluno -->
+            <Border
+                Padding="16"
+                BackgroundColor="White"
+                Stroke="#E0E0E0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Dados do aluno"
+                        FontSize="19"
+                        FontAttributes="Bold"
+                        TextColor="#171717" />
+
+                    <Label Text="Selecione um aluno já cadastrado" />
+
+                    <Picker
+                        Title="Escolha o aluno"
+                        ItemsSource="{Binding Alunos}"
+                        ItemDisplayBinding="{Binding Nome}"
+                        SelectedItem="{Binding AlunoSelecionado}"
+                        TextColor="#171717" />
+
+                    <Label
+                        Text="{Binding AlunoSelecionado.Cpf, StringFormat='CPF: {0}'}"
+                        TextColor="#555555" />
+
+                    <Label
+                        Text="{Binding AlunoSelecionado.DataNascimento, StringFormat='Nascimento: {0}'}"
+                        TextColor="#555555" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Plano e período -->
+            <Border
+                Padding="16"
+                BackgroundColor="White"
+                Stroke="#E0E0E0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Plano e período"
+                        FontSize="19"
+                        FontAttributes="Bold"
+                        TextColor="#171717" />
+
+                    <Label Text="Plano da matrícula" />
+
+                    <Picker
+                        Title="Selecione o plano"
+                        ItemsSource="{Binding Planos}"
+                        SelectedItem="{Binding PlanoSelecionado}"
+                        TextColor="#171717" />
+
+                    <Label Text="Data de início" />
+
+                    <DatePicker
+                        Date="{Binding DataInicioSelecionada, Mode=TwoWay}" />
+
+                    <Label
+                        Text="Data final calculada automaticamente"
+                        FontSize="13"
+                        TextColor="#666666" />
+
+                    <Label
+                        Text="{Binding DataFimCalculada, StringFormat='{0:dd/MM/yyyy}'}"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="#228B22" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Objetivo -->
+            <Border
+                Padding="16"
+                BackgroundColor="White"
+                Stroke="#E0E0E0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Objetivo do aluno"
+                        FontSize="19"
+                        FontAttributes="Bold"
+                        TextColor="#171717" />
+
+                    <Editor
+                        Placeholder="Ex.: Ganho de massa muscular, emagrecimento..."
+                        Text="{Binding Objetivo}"
+                        AutoSize="TextChanges"
+                        MinimumHeightRequest="90" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Restrições médicas -->
+            <Border
+                Padding="16"
+                BackgroundColor="White"
+                Stroke="#E0E0E0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Restrições médicas"
+                        FontSize="19"
+                        FontAttributes="Bold"
+                        TextColor="#171717" />
+
+                    <Label
+                        Text="Marque todas as condições que se aplicam ao aluno."
+                        FontSize="13"
+                        TextColor="#666666" />
+
+                    <CheckBox
+                        IsChecked="{Binding Diabetes}"
+                        Color="#39FF14" />
+
+                    <Label Text="Diabetes" />
+
+                    <CheckBox
+                        IsChecked="{Binding PressaoAlta}"
+                        Color="#39FF14" />
+
+                    <Label Text="Pressão alta" />
+
+                    <CheckBox
+                        IsChecked="{Binding Labirintite}"
+                        Color="#39FF14" />
+
+                    <Label Text="Labirintite" />
+
+                    <CheckBox
+                        IsChecked="{Binding Alergias}"
+                        Color="#39FF14" />
+
+                    <Label Text="Alergias" />
+
+                    <CheckBox
+                        IsChecked="{Binding ProblemasRespiratorios}"
+                        Color="#39FF14" />
+
+                    <Label Text="Problemas respiratórios" />
+
+                    <CheckBox
+                        IsChecked="{Binding RemedioContinuo}"
+                        Color="#39FF14" />
+
+                    <Label Text="Uso de remédios contínuos" />
+
+                    <Label
+                        Text="Observações sobre as restrições"
+                        FontAttributes="Bold" />
+
+                    <Editor
+                        Placeholder="Descreva detalhes importantes..."
+                        Text="{Binding ObservacoesRestricoes}"
+                        AutoSize="TextChanges"
+                        MinimumHeightRequest="90" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Laudo médico -->
+            <Border
+                Padding="16"
+                BackgroundColor="White"
+                Stroke="#E0E0E0">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        Text="Laudo médico"
+                        FontSize="19"
+                        FontAttributes="Bold"
+                        TextColor="#171717" />
+
+                    <Label
+                        Text="O documento deve autorizar a prática de atividades físicas quando exigido."
+                        FontSize="13"
+                        TextColor="#666666" />
+
+                    <Button
+                        Text="Selecionar laudo médico"
+                        Command="{Binding SelecionarLaudoCommand}"
+                        BackgroundColor="#39FF14"
+                        TextColor="#171717"
+                        FontAttributes="Bold"
+                        CornerRadius="10" />
+
+                    <Label
+                        Text="{Binding NomeLaudoMedico}"
+                        FontSize="13"
+                        TextColor="#555555" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Botões -->
+            <Button
+                Text="Salvar matrícula"
+                Command="{Binding SalvarCommand}"
+                BackgroundColor="#39FF14"
+                TextColor="#171717"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                HeightRequest="50" />
+
+            <Button
+                Text="Voltar"
+                BackgroundColor="#DDDDDD"
+                TextColor="#171717"
+                CornerRadius="10"
+                Command="{Binding VoltarCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
